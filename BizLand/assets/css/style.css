@@ -471,7 +471,7 @@ h6 {
 #hero {
   width: 100%;
   height: 75vh;
-  background: url("../img/hardware1.jpg") top left;
+  background: url("../img/backmaumau2.jpg") top left;
   background-size: cover;
   position: relative;
 }
@@ -504,7 +504,7 @@ h6 {
 }
 
 #hero h2 {
-  color: #555555;
+  color: #000;
   margin: 5px 0 30px 0;
   font-size: 24px;
   font-weight: 400;
