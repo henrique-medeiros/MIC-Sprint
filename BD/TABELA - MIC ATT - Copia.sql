@@ -34,6 +34,9 @@ VersaSO VARCHAR (45),
 serialMaq VARCHAR (45)
 );
 
+
+
+
 create table leitura (
 idMetricas int primary key auto_increment,
 fkMaquina INT, 
@@ -53,40 +56,11 @@ DropDown varchar(6),
 DropUp varchar(6)
 );
 
-create table maquinaSim (
-idMaquinaSim INT PRIMARY KEY auto_incremenT, 
-nomeMaq VARCHAR (45)
-);
-
-create table leitura (
-idLeituraSim INT PRIMARY KEY AUTO_INCREMENT,
-fkmaquinaSim INT,
-foreign key (fkMaquinaSim) references maquinaSim (idMaquinaSim),
-cpuLeitura DECIMAL,
-discoLeitura DECIMAL, 
-memoriaLeitura DECIMAL
-); 
-
-insert into maquinaSim (nomeMaq) values ('maquina 1'),
-										('maquina 2'),
-                                        ('maquina 3');
-
-
-
-select * from leitura where fkmaquinaSim = 1;
-select * from leitura where fkmaquinaSim = 2;
-select * from leitura where fkmaquinaSim = 3;
-
 select * from maquina;
 select * from analista;
 select * from empresa;
-
-select * from maquinaSim;
 select * from leitura;
-
 truncate table leitura;
-
 drop table leitura;
-drop table maquinaSim;
 
 drop database mic;

@@ -1,14 +1,14 @@
-from pickletools import decimalnl_short
-from unicodedata import decimal
+# Matheus Tonini, Mauricio Ueso, Larissa Gouveia, Ezequiel Leandro e Henrique Medeiros - SIS
+
 import psutil
 import time
 import datetime
 from datetime import date
-import os
 import math
 import mysql.connector
-from mysql.connector import errorcode
+
 # pretty library
+
 
 i = 0
 while (i < 5):
@@ -36,23 +36,6 @@ while (i < 5):
     uploadPack = round((psutil.net_io_counters()[2]) * (10 ** -3))
     downloadPack = round((psutil.net_io_counters()[3]) * (10 ** -3))
     
-    dataHora = datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')
-
-
-    #VARIAVEIS SIMULADOR 
-
-    cpu1 = PrcntCPU
-    memo1 = PrcntRAM
-    disco1 = PrcntDisco
-
-    cpu2 = (cpu1 + (cpu1 * 0.1)) - (cpu3 - 0.05)
-    memo2 = (memo1 + (memo1 * 0.15)) + (memo3 + 0.05)
-    disco2 = disco1 - (disco1 * 0.05)
-
-
-    cpu3 = cpu1 + (cpu1 * 0.15) 
-    memo3 = memo1 + (memo1 * 0.1)
-    disco3 = (disco2 * 3)
 
 
     # print("\n")
@@ -87,15 +70,48 @@ while (i < 5):
     DropDown = psutil.net_io_counters()[6]
     DropUp = psutil.net_io_counters()[7]
 
-    cursor = db_connection.cursor()
-    sql = "INSERT INTO leitura (DataHora,PrcntCPU,FreqCPU,PortasLogicas,TotalRAM,PrcntRAM,TotalVirtual,TotalDisco,PrcntDisco,Upload,Download,DropDown,DropUp) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-    values = [dataHora, PrcntCPU, FreqCPU, PortasLogicas, TotalRAM, PrcntRAM, TotalVirtual, TotalDisco, PrcntDisco, Upload, Download, DropDown, DropUp]
-    cursor.execute(sql, values)
-    current_date = date.today()
-    formatted_date = current_date.strftime('%d/%m/%Y')
 
-    print(formatted_date)
+   #VARIAVEIS SIMULADOR 
+
+    cpu1 = PrcntCPU
+    memo1 = PrcntRAM
+    disco1 = PrcntDisco
+
+    disco2 = disco1 - (disco1 * 0.05)
+
+    cpu3 = cpu1 + (cpu1 * 0.15) 
+    memo3 = memo1 + (memo1 * 0.1)
+    disco3 = (disco2 * 3)
+
+
+    cpu2 = (cpu1 + (cpu1 * 1.10)) - (cpu3 - 1.05)
+    memo2 = (memo1 + (memo1 * 0.15)) + (memo3 + 0.05)
+   
+
+
+    cursor = db_connection.cursor()
+
+    fkmaquinaSim = 1
+    sql = "INSERT INTO leitura (fkmaquinaSim, cpuLeitura, discoLeitura, memoriaLeitura) VALUES (%s,%s,%s,%s)"
+    values = [fkmaquinaSim, cpu1, disco1, memo1]
+    cursor.execute(sql, values)
+   
+
+    fkmaquinaSim = 2
+    sql = "INSERT INTO leitura(fkmaquinaSim, cpuLeitura, discoLeitura, memoriaLeitura) VALUES (%s,%s,%s,%s)"
+    values = [fkmaquinaSim, cpu2, disco2, memo2]
+    cursor.execute(sql, values)
+    
+   
+    fkmaquinaSim = 3
+    sql = "INSERT INTO leitura (fkmaquinaSim, cpuLeitura, discoLeitura, memoriaLeitura) VALUES (%s,%s,%s,%s)"
+    values = [fkmaquinaSim, cpu3, disco3, memo3]
+    cursor.execute(sql, values)
+    
+
+    print()
     print(cursor.rowcount, "Inseri no banco")
+
     db_connection.commit()
     db_connection.close()
 
