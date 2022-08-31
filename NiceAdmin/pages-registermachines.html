@@ -59,58 +59,66 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Crie sua conta!</h5>
+                    <h5 class="card-title text-center pb-0 fs-4">Cadastre as máquinas que deseja monitorar</h5>
                     <p class="text-center small">Insira os dados a seguir para criar sua conta</p>
                   </div>
 
                   <form class="row g-3 needs-validation" novalidate>
                     <div class="col-12">
-                      <label for="yourName" class="form-label">Nome da Empresa</label>
+                      <label for="yourName" class="form-label">Ponto de atendimento</label>
                       <input type="text" name="name" class="form-control" id="yourName" required>
                       <div class="invalid-feedback">Por favor, insira o nome da empresa!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourEmail" class="form-label">E-mail</label>
-                      <input type="email" name="email" class="form-control" id="yourEmail" required>
+                      <label for="yourEmail" class="form-label">Setor</label>
+                      <input type="text" name="email" class="form-control" id="yourEmail" required>
                       <div class="invalid-feedback">Por favor, insira o e-mail da empresa!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourPassword" class="form-label">Senha</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Por favor, crie uma senha!</div>
+                      <label for="yourPassword" class="form-label">CPU(GHz)</label>
+                      <input type="number" name="password" class="form-control" id="yourPassword" required>
+                      <div class="invalid-feedback">Por favor, informe a CPU da sua máquina!</div>
                     </div>
 
                     
 
                     <div class="col-12">
-                      <label for="yourEmail" class="form-label">CNPJ</label>
+                      <label for="yourEmail" class="form-label">RAM(GB)</label>
                       <input type="number" name="email" class="form-control" id="yourEmail" required>
-                      <div class="invalid-feedback">Por favor, insira seu CNPJ!</div>
+                      <div class="invalid-feedback">Por favor, a RAM da sua máquina!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourEmail" class="form-label">Telefone</label>
+                      <label for="yourEmail" class="form-label">Disco(GB)</label>
                       <input type="number" name="email" class="form-control" id="yourEmail" required>
-                      <div class="invalid-feedback">Por favor, insira seu Telefone!</div>
+                      <div class="invalid-feedback">Por favor, insira o disco da sua máquina!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourEmail" class="form-label">Quantidade de setores</label>
+                      <label for="yourEmail" class="form-label">Rede(Mb/s)</label>
                       <input type="number" name="email" class="form-control" id="yourEmail" required>
-                      <div class="invalid-feedback">Por favor, insira a quantidade de setores!</div>
+                      <div class="invalid-feedback">Por favor, insira a rede do setor que essa máquina fica!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourEmail" class="form-label">Quantidade de máquinas</label>
-                      <input type="number" name="email" class="form-control" id="yourEmail" required>
-                      <div class="invalid-feedback">Por favor, insira a quantidade de máquinas!</div>
+                      <label for="yourEmail" class="form-label">Sistema operacional</label>
+                      <input type="text" name="email" class="form-control" id="yourEmail" required>
+                      <div class="invalid-feedback">Por favor, informe o sistema operacional da sua máquina!</div>
                     </div>
 
-                    
+                    <div class="col-12">
+                        <label for="yourEmail" class="form-label">Versão do sistema operacional</label>
+                        <input type="text" name="email" class="form-control" id="yourEmail" required>
+                        <div class="invalid-feedback">Por favor, informe a versão do sistema operacional da sua máquina!</div>
+                      </div>
 
-                   
+                      <div class="col-12">
+                        <label for="yourEmail" class="form-label">Número Serial da máquina</label>
+                        <input type="number" name="email" class="form-control" id="yourEmail" required>
+                        <div class="invalid-feedback">Por favor, informe o número serial da sua máquina!</div>
+                      </div>
 
                     <div class="col-12">
                       <div class="form-check">
@@ -123,8 +131,8 @@
                       <button class="btn btn-primary w-100" type="submit">Criar conta</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Já possui cadastro? <a href="pages-login.html">Login</a></p>
-                    </div>
+                        <p class="small mb-0">Voltar a pagina de<a href="index.html"> monitoramento</a></p>
+                      </div>
                   </form>
 
                 </div>
