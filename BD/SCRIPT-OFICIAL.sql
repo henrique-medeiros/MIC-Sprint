@@ -24,43 +24,56 @@ senhaAnalista VARCHAR (45)
 create table maquina (
 idMaquina INT PRIMARY KEY AUTO_INCREMENT, 
 PA INT, 
-Setor VARCHAR (45),
-CPU VARCHAR (45),
-RAM VARCHAR (45),
-Disco VARCHAR (45),
-Rede VARCHAR (45),
+Setor INT,
+CPU DECIMAL(4,1),
+RAM DECIMAL(4,1),
+Disco DECIMAL(4,1),
+Rede DECIMAL(4,1),
 SistemaOperacional VARCHAR (45),
 VersaSO VARCHAR (45),
 serialMaq VARCHAR (45)
 );
 
 
-
+create table maquinaSim (
+idMaquinaSim INT PRIMARY KEY auto_incremenT, 
+nomeMaq VARCHAR (45)
+);
 
 create table leitura (
 idMetricas int primary key auto_increment,
 fkMaquina INT, 
-foreign key (fkMaquina) references maquina (idMaquina),
-DataHora varchar(19),
-PrcntCPU varchar(6),
-FreqCPU varchar(6),
+foreign key (fkMaquina) references maquinaSim (idMaquinaSim),
+DataHora VARCHAR(20),
+PrcntCPU DECIMAL(4,1),
 PortasLogicas varchar(2),
-TotalRAM varchar(6),
-PrcntRAM varchar(6),
-TotalVirtual varchar(6),
-TotalDisco varchar(6),
-PrcntDisco varchar(6),
-Upload varchar(6),
-Download varchar(6),
-DropDown varchar(6),
-DropUp varchar(6)
+PrcntRAM DECIMAL(4,1),
+TotalVirtual INT,
+PrcntDisco DECIMAL(4,1),
+Upload DECIMAL(4,1),
+Download DECIMAL(4,1),
+DropDown DECIMAL(4,1),
+DropUp DECIMAL(4,1)
 );
 
-select * from maquina;
-select * from analista;
-select * from empresa;
+
+insert into maquinaSim (nomeMaq) values ('maquina 1'),
+										('maquina 2'),
+                                        ('maquina 3');
+
+
+
+select * from leitura where fkmaquinaSim = 1;
+select * from leitura where fkmaquinaSim = 2;
+select * from leitura where fkmaquinaSim = 3;
+
+
+select * from maquinaSim;
 select * from leitura;
+
 truncate table leitura;
+
 drop table leitura;
+drop table maquinaSim;
 
 drop database mic;
