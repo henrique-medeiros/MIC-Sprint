@@ -4,6 +4,7 @@ import datetime
 from datetime import date
 import math
 import mysql.connector
+from mysql.connector import errorcode
 
 
 i = 0
