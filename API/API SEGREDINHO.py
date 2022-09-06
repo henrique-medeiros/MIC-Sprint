@@ -4,12 +4,17 @@ import datetime
 from datetime import date
 import math
 import mysql.connector
-from mysql.connector import errorcode
+import matplotlib.pyplot
 
-
+medida =[]
+dados_cpu=[]
+dados_memo=[]
+dados_disco=[]
 i = 0
+
 while (i < 5):
     i += 1
+   
     try:
         db_connection = mysql.connector.connect(
            host='localhost', user='root', password='#Gf44456839813', database='MIC')
@@ -26,8 +31,10 @@ while (i < 5):
     db_connection.close()
     print('connection close') """
 
-    #VARIAVEIS SIMULADOR 
+    #VARIAVEIS SIMULADOR
 
+    
+   
     PrcntCPU =  psutil.cpu_percent() 
     PortasLogicas = psutil.cpu_count()
 
@@ -45,10 +52,12 @@ while (i < 5):
     DropUp = psutil.net_io_counters()[7]
     
     DataHora = datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')
-
+    
+   
     cpu1 = PrcntCPU
     cpu2 = (cpu1 + (cpu1 * 0.1)) 
     cpu3 = cpu2 + (cpu2 * 0.05) 
+   
 
     memo1 = PrcntRAM
     memo2 = memo1 + (memo1 * 0.15)
@@ -85,12 +94,47 @@ while (i < 5):
     print(cursor.rowcount, "Inseri no banco")
     db_connection.commit()
     db_connection.close()
-
-
+    
+    dados_cpu.append(cpu1)
+    dados_memo.append(memo1)
+    dados_disco.append(disco1)
+    medida.append(str(i))
    
     time.sleep(3) #tempo de 3 segundos para a repetição
     print("Processo finalizado!")
+   
+    print (len (medida))
+    print (len (dados_cpu))
 
+    if( i == 5):
+    
+       matplotlib.pyplot.title('Porcentagem da CPU')
+       matplotlib.pyplot.xlabel('Numero de Identificação do Dado')
+       matplotlib.pyplot.ylabel('Porcentagem')
+       matplotlib.pyplot.plot(medida, dados_cpu)
+       matplotlib.pyplot.ylim(0, 100)
+       matplotlib.pyplot.show()
+
+       
+       matplotlib.pyplot.title('Porcentagem da Memória')
+       matplotlib.pyplot.xlabel('Numero de Identificação do Dado')
+       matplotlib.pyplot.ylabel('Porcentagem')
+       matplotlib.pyplot.plot(medida, dados_memo)
+       matplotlib.pyplot.ylim(0, 100)
+       matplotlib.pyplot.show()
+
+       matplotlib.pyplot.title('Porcentagem do Disco')
+       matplotlib.pyplot.xlabel('Numero de Identificação do Dado')
+       matplotlib.pyplot.ylabel('Porcentagem')
+       matplotlib.pyplot.plot(medida, dados_disco)
+       matplotlib.pyplot.ylim(0, 100)
+       matplotlib.pyplot.show()
+
+       
+
+    
+    
+       
     # Grupo 09
     # EZEQUIEL LEANDRO JUNGE DA SILVA           RA:03221063
     # HENRIQUE MEDEIROS ALVES                   RA:03221029
